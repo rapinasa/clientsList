@@ -3,8 +3,8 @@ import { bindActionCreators } from 'redux';
 import * as ClientsActions from '../actions/clients';
 import App from '../components/App';
 
-
 const filterClients = (clients,filterBy, searchQuery) =>
+
   clients.filter(
     o =>
       o.general.lastName.toLowerCase().indexOf(searchQuery.toLowerCase()) >= 0 ||
@@ -16,8 +16,7 @@ const filterClients = (clients,filterBy, searchQuery) =>
       o.address.country.toLowerCase().indexOf(searchQuery.toLowerCase()) >= 0 ||
       o.address.zipCode.toLowerCase().indexOf(searchQuery.toLowerCase()) >= 0 ||
       o.address.city.toLowerCase().indexOf(searchQuery.toLowerCase()) >= 0 ||
-      o.address.street.toLowerCase().indexOf(searchQuery.toLowerCase()) >= 0,
-
+      o.address.street.toLowerCase().indexOf(searchQuery.toLowerCase()) >= 0
   );
 
 const mapStateToProps = ({ clients, filter }) => ({

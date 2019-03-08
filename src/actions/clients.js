@@ -1,3 +1,4 @@
+
 export const setClients = client => dispatch => {
 	setTimeout(()=>{
 dispatch({
@@ -22,5 +23,9 @@ export const setSearchQuery = value => ({
   payload: value,
 });
 
+export const addDetails = clients => ({
+  type: 'ADD_DETAILS',
+  payload: clients,
+});
 
 
