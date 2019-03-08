@@ -1,23 +1,33 @@
+
+
+
 const initialState = {
   isReady: false,
   items: null,
+  error: null,
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case 'SET_CLIENTS':
-      return {
+
+      case 'FETCH_ERROR': 
+          return {
         ...state,
-        items: action.payload,
-        isReady: true,
-      };
-    case 'SET_IS_READY':
-      return {
-        ...state,
-        isReady: action.payload,
+        isReady: false,
+        error: action.payload,
       };
       break;
+
+        case 'SET_CLIENTS':
+      return {
+        ...state,
+        isReady: true,
+        items: action.payload,
+      };
+
     default:
       return state;
   }
 };
+
+

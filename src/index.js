@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import 'semantic-ui-css/semantic.min.css';
 import App from './containers/App';
-import createStore from './store';
+import configureStore from './store';
 
-const store = createStore();
+const store = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>

@@ -2,10 +2,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as ClientsActions from '../actions/clients';
 import App from '../components/App';
-import orderBy from 'lodash/orderBy';
 
 
-const filterClients = (clients, searchQuery) =>
+const filterClients = (clients,filterBy, searchQuery) =>
   clients.filter(
     o =>
       o.general.lastName.toLowerCase().indexOf(searchQuery.toLowerCase()) >= 0 ||
@@ -21,12 +20,8 @@ const filterClients = (clients, searchQuery) =>
 
   );
 
-const searchClients = (clients, filterBy, searchQuery) => {
-  return filterClients(clients, searchQuery);
-};
-
 const mapStateToProps = ({ clients, filter }) => ({
-  clients: clients.items && searchClients(clients.items, filter.filterBy, filter.searchQuery),
+  clients: clients.items && filterClients(clients.items, filter.filterBy, filter.searchQuery),
   isReady: clients.isReady,
 });
 
@@ -38,3 +33,5 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps,
 )(App);
+
+
